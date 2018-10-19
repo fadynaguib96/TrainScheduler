@@ -64,21 +64,19 @@
             var tRemainder = diffTime % traFreq;
             console.log(tRemainder);
 
-            var tMinutesTillTrain = traFreq - tRemainder;
-            console.log(tMinutesTillTrain)
+            var tMinutesTillTrain;
+           
 
-            var nextTrain;
-
-            console.log(moment(now, "milliseconds"))
-            console.log(moment(traDate, "millisecond"))
-
+            var nextTrain ;
 
             if (moment(now, "HH:mm") < moment(traDate, "HH:mm")) {
                 nextTrain  = traDate
+                tMinutesTillTrain = -1*(moment().diff(moment(traDate, "HH:mm"), "minutes"))
             }
 
             else {
                 nextTrain = moment().add(tMinutesTillTrain, "minutes").format("HH:mm");
+                var tMinutesTillTrain = traFreq - tRemainder;
 
             }
 
